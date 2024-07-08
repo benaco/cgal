@@ -106,7 +106,8 @@ public:
 
   Col_4 construct_optimal_point(const Mat_4& quadric, const Col_4& /*p0*/, const Col_4& /*p1*/) const
   {
-    // @fixme check this
+    // TODO: not every non-zero matrix is invertible
+    CGAL_precondition(!quadric.isZero(0));
     return construct_optimal_point_invertible<GeomTraits>(quadric);
   }
 };
